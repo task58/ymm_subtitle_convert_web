@@ -5,27 +5,31 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>YMMが自動生成する.subファイルをいじくるためのやつ</title>
 	<script src="./main.js"></script>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<h1>YMMが自動生成する.subファイルをいじくるためのやつ</h1>
 	<hr>
-	<div>
+	<div class="namein">
+		<p>置換</p>
 		<input type="button" value="追加" id="add_name_input"><br>
 		<table  name="name_input_table" id="name_input_table">
 			<tr>
 				<th>元の名前</th>
 				<th>置換後の名前</th>
+				<th>削除</th>
 			</tr>
 		</table>
 	</div>
 	<hr>
-	<div>
-		<label for="input">input</label>
+	<div class="subin">
+		<label for="input">input</label><br>
 		<textarea name="input" id="input"></textarea><br>
-		<input type="button" id="submit" value="submit">
+		<input type="button" id="submit" value="置換">
 	</div>
-	<div>
-		<label for="output">output</label>
+	<hr>
+	<div class="subout">
+		<label for="output">output</label><br>
 		<textarea name="output" id="output"></textarea>
 	</div>
 </body>

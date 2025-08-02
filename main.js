@@ -31,8 +31,7 @@ window.addEventListener("load",()=>{
 		let txt = "" + inputElement.value;
 
 		replaceNames.forEach((val,key)=>{
-			txt = txt.replaceAll(`>> ${val[0]}\n`,val[1]);
-			console.log(val);
+			txt = txt.replaceAll(`>> ${val[0]}\n`,`${val[1]}\n`);
 		})
 
 		outputElement.value = txt
@@ -64,6 +63,13 @@ window.addEventListener("load",()=>{
 		fromInput.addEventListener("input",inputFunc);
 		toInput.addEventListener("input",inputFunc)
 
+		let deleteButton = document.createElement("input");
+		deleteButton.type = "button"
+		deleteButton.value = "削除"
+		deleteButton.addEventListener("click",()=>{
+			replaceNames.delete(key);
+			trElem.remove();
+		})
 
 		let fromTd = document.createElement("td");
 		fromTd.appendChild(fromInput);
@@ -71,8 +77,12 @@ window.addEventListener("load",()=>{
 		let toTd = document.createElement("td");
 		toTd.appendChild(toInput);
 
+		let deleteTd = document.createElement("td");
+		deleteTd.appendChild(deleteButton);
+
 		trElem.appendChild(fromTd);
 		trElem.appendChild(toTd);
+		trElem.appendChild(deleteTd);
 
 		nameInputTable.appendChild(trElem);
 

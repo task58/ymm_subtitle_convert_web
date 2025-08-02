@@ -1,0 +1,22 @@
+body{
+    width: 100%;
+    margin: 2%;
+}
+
+#name_input_table ,#name_input_table th, #name_input_table td {
+	border: 1px solid black;
+}
+
+#name_input_table th, #name_input_table td {
+	padding: 5px;
+}
+
+textarea{
+	width: 90%;
+    height: 200px;
+    resize: none;
+}
+
+
+
+
