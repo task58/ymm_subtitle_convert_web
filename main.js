@@ -1,11 +1,8 @@
 /** @type HTMLInputElement */
-let submitButton;
+let fileUploadElem;
 
-/** @type HTMLTextAreaElement */
-let inputElement;
-
-/** @type HTMLTextAreaElement */
-let outputElement;
+/** @type HTMLInputElement */
+let fileUploadButton;
 
 /** @type HTMLInputElement */
 let addNameInputButton;
@@ -13,6 +10,15 @@ let addNameInputButton;
 /** @type HTMLTableElement */
 let nameInputTable;
 
+
+/** @type HTMLInputElement */
+let submitButton;
+
+/** @type HTMLTextAreaElement */
+let inputElement;
+
+/** @type HTMLTextAreaElement */
+let outputElement;
 
 /** @type Map<number,string[]> */
 let replaceNames = new Map();
@@ -25,6 +31,9 @@ window.addEventListener("load",()=>{
 
 	addNameInputButton = document.getElementById("add_name_input");
 	nameInputTable = document.getElementById("name_input_table");
+
+	fileUploadElem = document.getElementById("file_input")
+	fileUploadButton = document.getElementById("file_input_button")
 
 
 	submitButton.addEventListener("click",()=>{
@@ -85,6 +94,26 @@ window.addEventListener("load",()=>{
 		trElem.appendChild(deleteTd);
 
 		nameInputTable.appendChild(trElem);
+
+	})
+
+	fileUploadButton.addEventListener("click",()=>{
+		if(fileUploadElem.files.length < 1){
+			alert("file not uploaded");
+			return;
+		}
+
+		let file = fileUploadElem.files[0];
+
+		let reader = new FileReader()
+		reader.readAsText(file);
+
+		function load(){
+			inputElement.value = reader.result;
+			reader.removeEventListener("load",load);
+		}
+		
+		reader.addEventListener("load",load);
 
 	})
 })
